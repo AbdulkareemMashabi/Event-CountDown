@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum EventMode {
+    case add
+    case edit
+}
