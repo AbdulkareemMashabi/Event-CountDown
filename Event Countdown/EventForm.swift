@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct EventForm: View {
-    @State var title: String = "";
-    @State var date = Date();
-    @State var color = Color.blue;
+    @State var title: String = ""
+    @State var date = Date()
+    @State var color = Color.blue
     var id:UUID = UUID()
     var mode: EventMode;
     var onSave: (Event) -> Void;
     @Environment(\.dismiss) private var dismiss
     
-    var pageTitle: String {
+    private var pageTitle: String {
         switch mode {
         case .add:
             return "Add Event"
