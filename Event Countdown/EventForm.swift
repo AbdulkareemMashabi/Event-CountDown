@@ -29,7 +29,7 @@ struct EventForm: View {
         Form {
             Section() {
                 TextField("Title", text: $title)
-                DatePicker("Date", selection: $date)
+                DatePicker("Date", selection: $date, in: Date()..., displayedComponents: [.date, .hourAndMinute])
                 ColorPicker("Text Color", selection: $color)
                 
             }

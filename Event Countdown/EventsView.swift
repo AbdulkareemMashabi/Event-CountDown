@@ -13,11 +13,12 @@ struct EventsView: View {
     @State var events: [Event]
     
     init() {
-        self.events = FileHelper.load() ?? []
+        self.events = FileHelper.load()?.sorted() ?? []
     }
     
     func onSave (event: Event) {
         events.append(event)
+        events = events.sorted()
         FileHelper.save(events)
     }
     
@@ -25,6 +26,7 @@ struct EventsView: View {
         let eventIndex = events.firstIndex(where: {$0.id == event.id})
         if let index = eventIndex {
             events[index] = event
+            events = events.sorted()
             FileHelper.save(events)
         }
     }
@@ -38,6 +40,7 @@ struct EventsView: View {
                             .swipeActions {
                                 Button(action: {
                                     events.remove(at: index)
+                                    events = events.sorted()
                                     FileHelper.save(events)
                                 }) {
                                     Image(systemName: "trash")
